@@ -9,10 +9,11 @@ local webhook = "" --Add webhook right here
     RegisterCommand("combat", function(source, args, rawcmd)
         TriggerClientEvent("remd-combat-log:show", source)
     end)
-    RegisterCommand("testlog", function(source, args, rawcmd)
+   --[[ RegisterCommand("testlog", function(source, args, rawcmd)
         local reason = "Test"
         writelog(source,reason)
     end)
+]]--
 -- End of test commands
 function writelog(source,reason)
     local crds = GetEntityCoords(GetPlayerPed(source))
