@@ -1,4 +1,4 @@
-local show3DText = true
+local show3DText = true -- if true it will show combatlog default
 RegisterNetEvent("remd-combat-log:show")
 AddEventHandler("remd-combat-log:show", function()
     if show3DText then
