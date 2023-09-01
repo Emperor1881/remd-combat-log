@@ -12,8 +12,7 @@ local webhook = "" --Add webhook right here
    --[[ RegisterCommand("testlog", function(source, args, rawcmd)
         local reason = "Test"
         writelog(source,reason)
-    end)
-]]--
+    end)]]--
 -- End of test commands
 function writelog(source,reason)
     local crds = GetEntityCoords(GetPlayerPed(source))
@@ -46,16 +45,12 @@ AddEventHandler("playerDropped", function(reason)
     writelog(_src,reason)
 end)
 function SendLog(id, crds, identifier, reason, name)
+    local name = GetPlayerName(id)
     local _source = id
     local Character = VORPcore.getUser(_source).getUsedCharacter
-    local name = (Character.firstname or "no name") .. ' ' .. (Character.lastname or "noname") --player char name
+    local icname = (Character.firstname or "no name") .. ' ' .. (Character.lastname or "noname") --player char name
     local date = os.date('*t')
 
-    print("name:"..name)
-    print("id:"..id)
-    print("X: "..crds.x..", Y: "..crds.y..", Z: "..crds.z)
-    print("identifier:"..identifier)
-    print("reason:"..reason)
     if date.month < 10 then date.month = '0' .. tostring(date.month) end
     if date.day < 10 then date.day = '0' .. tostring(date.day) end
     if date.hour < 10 then date.hour = '0' .. tostring(date.hour) end
@@ -89,13 +84,13 @@ function SendLog(id, crds, identifier, reason, name)
                     ["value"] = reason,
                     ["inline"] = true,
                 },{
-                    ["name"] = "AD",
-                    ["value"] = name,
+                    ["name"] = "Name",
+                    ["value"] = icname,
                     ["inline"] = true,
                 },
             },
             ["footer"]=  {
-                ["icon_url"] = "https://forum.fivem.net/uploads/default/original/4X/7/5/e/75ef9fcabc1abea8fce0ebd0236a4132710fcb2e.png",
+                ["icon_url"] = "https://i.imgur.com/KVh9oxB.png",
                 ["text"]= "Sent: " ..date.."",
             },
         }
